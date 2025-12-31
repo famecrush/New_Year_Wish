@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>For Anuja ✨</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -24,7 +23,7 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:35px;
+  padding:25px;
   color:white;
   transition:opacity .8s ease, transform .8s ease;
 }
@@ -32,7 +31,7 @@ body{
 .hidden{
   opacity:0;
   pointer-events:none;
-  transform:scale(1.06);
+  transform:scale(1.05);
 }
 
 .slide::before{
@@ -57,54 +56,187 @@ body{
   animation:fadeUp 1.2s ease;
 }
 
-/* 🔥 BIG TEXT FIX */
 h1{
   font-family:'Playfair Display',serif;
-  font-size:clamp(3.2rem, 6vw, 4.8rem);
-  margin-bottom:20px;
-  text-shadow:2px 2px 8px rgba(0,0,0,0.45);
+  font-size:2.6rem;
+  margin-bottom:15px;
 }
 
 p{
-  font-size:clamp(1.5rem, 3vw, 2.1rem);
-  line-height:1.75;
-  margin-bottom:12px;
-  text-shadow:1px 1px 6px rgba(0,0,0,0.3);
+  font-size:1.15rem;
+  line-height:1.6;
+  margin-bottom:10px;
 }
 
 .cute{
   font-family:'Pacifico',cursive;
-  font-size:clamp(3rem, 6vw, 4.5rem);
+  font-size:2.3rem;
 }
 
 .emoji{
-  font-size:3rem;
-  margin-top:15px;
+  font-size:2.4rem;
+  margin-top:12px;
   animation:float 3s ease-in-out infinite;
 }
 
 .hint{
   position:absolute;
-  bottom:20px;
+  bottom:18px;
   width:100%;
   text-align:center;
-  font-size:1rem;
-  opacity:.75;
+  font-size:.85rem;
+  opacity:.7;
 }
 
 /* Confetti */
 .confetti{
   position:absolute;
-  width:10px;
-  height:18px;
+  width:8px;
+  height:14px;
   animation:fall 4s linear infinite;
-  opacity:.9;
+  opacity:.85;
 }
 
 @keyframes fall{
-  from{transform:translateY(-120px) rotate(0);}
+  from{transform:translateY(-100px) rotate(0);}
   to{transform:translateY(110vh) rotate(360deg);}
 }
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" src="Jashn.mp3" loop></audio>
+
+<!-- SLIDE 1 -->
+<div class="slide slide1">
+  <div class="content">
+    <h1>Hey</h1>
+    <p>Ek chhoti si kahaani, sirf tere liye…</p>
+    <div class="emoji">🤍</div>
+  </div>
+  <div class="hint">Tap ▶️</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide slide2 hidden">
+  <div class="content">
+    <h1>You’re Strong</h1>
+    <p>Shayad tu khud ko kabhi kabhi underestimate karti hai</p>
+    <p>Par jis tarah tu cheezein handle karti hai, woh rare hai</p>
+    <p>Tu apni jagah already best hai</p>
+    <div class="emoji">✨</div>
+  </div>
+  <div class="hint">Tap ▶️ | ◀️ Back</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide slide3 hidden">
+  <div class="content">
+    <h1 class="cute">This One’s for You</h1>
+    <p>Jab cheezein thodi heavy ho jaati hain</p>
+    <p>Tab bhi tu calm rehna choose karti hai</p>
+    <p>Aur wahi teri sabse sundar strength hai</p>
+    <div class="emoji">🧸</div>
+  </div>
+  <div class="hint">Tap ▶️ | ◀️ Back</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide slide4 hidden">
+  <div class="content">
+    <h1>If I Ever Hurt You</h1>
+    <p>Agar kabhi kisi baat se bura laga ho</p>
+    <p>Ya koi moment jo better handle ho sakta tha</p>
+    <p>Toh bas itna samajhna — it was never intentional</p>
+    <div class="emoji">🌙</div>
+  </div>
+  <div class="hint">Tap ▶️ | ◀️ Back</div>
+</div>
+
+<!-- SLIDE 5 (CONFETTI HERE) -->
+<div class="slide slide5 hidden" id="confettiSlide">
+  <div class="content">
+    <h1 class="cute">Wishing You a Happy New Year Anuja</h1>
+    <p>May this year bring you love, peace, and happiness</p>
+    <p>Tum jo deserve karti ho, woh tum tak zaroor aaye</p>
+    <p>Khud par bharosa rakhna — tum kaafi ho</p>
+    <div class="emoji">🎉</div>
+  </div>
+  <div class="hint">Tap ▶️ | ◀️ Back</div>
+</div>
+
+<!-- FINAL QUIET SLIDE -->
+<div class="slide slide6 hidden">
+  <div class="content">
+    <h1 class="cute">🤍</h1>
+    <p style="font-size:1.4rem;">
+      Thank you for being<br>
+      and for staying...<br>
+      
+      And yaad rakhe...
+      Picture abhi baki hai..
+      
+    </p>
+  </div>
+  <div class="hint">Tap ◀️ Back</div>
+</div>
+
+<script>
+let slides=document.querySelectorAll('.slide');
+let index=0;
+let musicStarted=false;
+
+function showSlide(i){
+  slides.forEach(s=>s.classList.add('hidden'));
+  slides[i].classList.remove('hidden');
+
+  if(slides[i].id==="confettiSlide"){
+    startConfetti();
+  }
+}
+
+document.addEventListener('click',(e)=>{
+  const half=window.innerWidth/2;
+
+  if(!musicStarted){
+    document.getElementById('bgMusic').play();
+    musicStarted=true;
+  }
+
+  if(e.clientX>half){
+    if(index<slides.length-1) index++;
+  }else{
+    if(index>0) index--;
+  }
+  showSlide(index);
+});
+
+function startConfetti(){
+  for(let i=0;i<35;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'%';
+    c.style.background=`hsl(${Math.random()*360},80%,60%)`;
+    c.style.animationDuration=3+Math.random()*3+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+}
+</script>
+
+</body>
+</html>}
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px);}
