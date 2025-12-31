@@ -2,109 +2,198 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Anuja ✨</title>
+<title>New Year Wish</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 body{
-  font-family:'Poppins',sans-serif;
+  height:100vh;
   overflow:hidden;
-  background:black;
+  font-family:'Poppins',sans-serif;
+  background:#000;
 }
 
+/* SLIDES */
 .slide{
   position:absolute;
-  width:100%;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-  color:white;
-  transition:opacity .8s ease, transform .8s ease;
-}
-
-.hidden{
-  opacity:0;
-  pointer-events:none;
-  transform:scale(1.05);
-}
-
-.slide::before{
-  content:"";
-  position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.35);
-}
-
-/* Backgrounds */
-.slide1{background:url('bg1.jpg') center/cover;}
-.slide2{background:url('bg2.jpg') center/cover;}
-.slide3{background:url('bg3.jpg') center/cover;}
-.slide4{background:url('bg4.jpg') center/cover;}
-.slide5{background:url('bg5.jpg') center/cover;}
-.slide6{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
-
-/* Content */
-.content{
-  position:relative;
-  max-width:90%;
-  animation:fadeUp 1.2s ease;
-}
-
-
-
-.cute{
-  font-family:'Pacifico',cursive;
-  font-size:2.3rem;
-}
-
-.emoji{
-  font-size:2.4rem;
-  margin-top:12px;
-  animation:float 3s ease-in-out infinite;
-}
-
-.hint{
-  position:absolute;
-  bottom:18px;
-  width:100%;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  font-size:.85rem;
-  opacity:.7;
+  padding:40px 20px;
+  opacity:0;
+  transform:scale(1.08);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:1;
 }
 
-/* Confetti */
-.confetti{
-  position:absolute;
-  width:8px;
-  height:14px;
-  animation:fall 4s linear infinite;
-  h1{
+/* TEXT */
+h1{
   font-family:'Playfair Display',serif;
-  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-size:clamp(3rem, 6vw, 4.5rem);
   margin-bottom:18px;
-  text-align:center;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+  animation:pop 1s ease;
+  text-shadow:2px 2px 8px rgba(0,0,0,0.4);
 }
-
 p{
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size:clamp(1.4rem, 3vw, 2rem);
   line-height:1.8;
   max-width:90%;
-  text-align:center;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+  animation:fadeUp 1.2s ease;
+  text-shadow:1px 1px 6px rgba(0,0,0,0.3);
 }
 
+/* COLORS */
+.s1{color:#0f172a;}
+.s2{color:#1e293b;}
+.s3{color:#7c2d12;}
+.s4{color:#1e3a8a;}
+.s5{color:#ffffff;}
+
+/* TEXT ANIMATIONS */
+@keyframes pop{
+  0%{transform:scale(0.7); opacity:0;}
+  100%{transform:scale(1); opacity:1;}
+}
+@keyframes fadeUp{
+  0%{transform:translateY(25px); opacity:0;}
+  100%{transform:translateY(0); opacity:1;}
+}
+
+/* CONFETTI */
+.confetti{
+  position:fixed;
+  top:-20px;
+  width:10px;
+  height:18px;
+  animation:fall linear forwards;
+}
 @keyframes fall{
-  from{transform:translateY(-100px) rotate(0);}
-  to{transform:translateY(110vh) rotate(360deg);}
+  to{
+    transform:translateY(120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 : THANK YOU -->
+<div class="slide active s2" style="background-image:url('bg2.png')">
+  <h1>Thank You 🤍</h1>
+  <p>
+    For being there, for understanding,<br>
+    and for staying when it truly mattered ✨
+  </p>
+</div>
+
+<!-- SLIDE 2 : STRONG -->
+<div class="slide s4" style="background-image:url('bg4.png')">
+  <h1>You Are Strong 🌸</h1>
+  <p>
+    The way you handle everything<br>
+    with calm and grace<br>
+    genuinely inspires me ✨
+  </p>
+</div>
+
+<!-- SLIDE 3 : CUTE -->
+<div class="slide s3" style="background-image:url('bg3.png')">
+  <h1>Some Warmth 🍒</h1>
+  <p>
+    A little comfort, soft smiles,<br>
+    teddy hugs and chocolates<br>
+    just for you 🧸🍫
+  </p>
+</div>
+
+<!-- SLIDE 4 : SORRY -->
+<div class="slide s1" style="background-image:url('bg1.png')">
+  <h1>I’m Sorry 🧿</h1>
+  <p>
+    If I ever hurt you knowingly or unknowingly,<br>
+    I truly apologize from my heart 🤍
+  </p>
+</div>
+
+<!-- SLIDE 5 : HAPPY NEW YEAR -->
+<div class="slide s5" style="background-image:url('bg5.png')">
+  <h1>Happy New Year 🎆</h1>
+  <p>
+    May this year bring peace,<br>
+    happiness and everything<br>
+    you truly deserve ✨
+  </p>
+</div>
+
+<script>
+let slides=document.querySelectorAll('.slide');
+let current=0;
+let confettiInterval=null;
+
+/* TAP NEXT */
+document.body.addEventListener('click',()=>{
+  changeSlide(1);
+});
+
+/* LONG PRESS / RIGHT CLICK BACK */
+document.body.addEventListener('contextmenu',(e)=>{
+  e.preventDefault();
+  changeSlide(-1);
+});
+
+function changeSlide(dir){
+  slides[current].classList.remove('active');
+  current=(current+dir+slides.length)%slides.length;
+  slides[current].classList.add('active');
+
+  if(current===4){
+    startConfetti();
+  }else{
+    stopConfetti();
+  }
 }
 
+/* CONFETTI FUNCTIONS */
+function startConfetti(){
+  if(confettiInterval) return;
+  confettiInterval=setInterval(()=>{
+    for(let i=0;i<10;i++){
+      let c=document.createElement('div');
+      c.className='confetti';
+      c.style.left=Math.random()*100+'vw';
+      c.style.backgroundColor=`hsl(${Math.random()*360},80%,70%)`;
+      c.style.animationDuration=3+Math.random()*3+'s';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),7000);
+    }
+  },200);
+}
+
+function stopConfetti(){
+  clearInterval(confettiInterval);
+  confettiInterval=null;
+}
+</script>
+
+</body>
+</html>
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px);}
   to{opacity:1;transform:translateY(0);}
