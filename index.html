@@ -2,109 +2,169 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Anuja ✨</title>
+<title>New Year Wish</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  user-select:none;
+}
 body{
-  font-family:'Poppins',sans-serif;
+  height:100vh;
   overflow:hidden;
-  background:black;
+  font-family:'Poppins',sans-serif;
 }
 
 .slide{
   position:absolute;
-  width:100%;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-  color:white;
-  transition:opacity .8s ease, transform .8s ease;
-}
-
-.hidden{
-  opacity:0;
-  pointer-events:none;
-  transform:scale(1.05);
-}
-
-.slide::before{
-  content:"";
-  position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.35);
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+  opacity:0;
+  transform:scale(1.05);
+  transition:0.8s ease;
 }
-
-/* Backgrounds */
-.slide1{background:url('bg1.jpg') center/cover;}
-.slide2{background:url('bg2.jpg') center/cover;}
-.slide3{background:url('bg3.jpg') center/cover;}
-.slide4{background:url('bg4.jpg') center/cover;}
-.slide5{background:url('bg5.jpg') center/cover;}
-.slide6{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);}
-
-/* Content */
-.content{
-  position:relative;
-  max-width:90%;
-  animation:fadeUp 1.2s ease;
+.slide.active{
+  opacity:1;
+  transform:scale(1);
+  z-index:1;
 }
 
 h1{
   font-family:'Playfair Display',serif;
-  font-size:2.6rem;
-  margin-bottom:15px;
-}
-
-p{
-  font-size:1.15rem;
-  line-height:1.6;
-  margin-bottom:10px;
-}
-
-.cute{
-  font-family:'Pacifico',cursive;
-  font-size:2.3rem;
-}
-
-.emoji{
   font-size:2.4rem;
-  margin-top:12px;
-  animation:float 3s ease-in-out infinite;
+  margin-bottom:12px;
+}
+p{
+  font-size:1.1rem;
+  line-height:1.7;
+  max-width:85%;
 }
 
-.hint{
-  position:absolute;
-  bottom:18px;
-  width:100%;
-  text-align:center;
-  font-size:.85rem;
-  opacity:.7;
-}
+/* TEXT COLORS */
+.s1{color:#1e3a8a;}
+.s2{color:#0f172a;}
+.s3{color:#7c2d12;}
+.s4{color:#1e293b;}
+.s5{color:#ffffff;}
 
-/* Confetti */
+/* CONFETTI */
 .confetti{
-  position:absolute;
-  width:8px;
-  height:14px;
-  animation:fall 4s linear infinite;
-  opacity:.85;
+  position:fixed;
+  top:-20px;
+  width:10px;
+  height:18px;
+  opacity:0.9;
+  animation:fall linear forwards;
 }
-
 @keyframes fall{
-  from{transform:translateY(-100px) rotate(0);}
-  to{transform:translateY(110vh) rotate(360deg);}
+  to{
+    transform:translateY(120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDE 1 : THANK YOU -->
+<div class="slide active s2" style="background-image:url('bg2.png')">
+  <h1>Thank You 🤍</h1>
+  <p>
+    For staying, understanding,<br>
+    and being present in ways<br>
+    that truly mattered ✨
+  </p>
+</div>
+
+<!-- SLIDE 2 : STRENGTH -->
+<div class="slide s4" style="background-image:url('bg4.png')">
+  <h1>You’re Truly Strong 🌸</h1>
+  <p>
+    The way you handle things<br>
+    with patience and grace<br>
+    is genuinely admirable ✨
+  </p>
+</div>
+
+<!-- SLIDE 3 : CUTE -->
+<div class="slide s3" style="background-image:url('bg3.png')">
+  <h1>A Little Warmth 🍒</h1>
+  <p>
+    Some comfort, soft smiles,<br>
+    and tiny joys—<br>
+    just for you 🧸🍫
+  </p>
+</div>
+
+<!-- SLIDE 4 : SORRY -->
+<div class="slide s1" style="background-image:url('bg1.png')">
+  <h1>If I Ever Hurt You 🧿</h1>
+  <p>
+    If anything ever felt wrong,<br>
+    or could’ve been better handled,<br>
+    I’m truly sorry 🤍
+  </p>
+</div>
+
+<!-- SLIDE 5 : HAPPY NEW YEAR -->
+<div class="slide s5" style="background-image:url('bg5.png')">
+  <h1>Happy New Year 🎆</h1>
+  <p>
+    May this year bring peace,<br>
+    clarity and happiness<br>
+    you genuinely deserve ✨
+  </p>
+</div>
+
+<script>
+let slides=document.querySelectorAll('.slide');
+let current=0;
+
+document.body.addEventListener('click',()=>changeSlide(1));
+document.body.addEventListener('contextmenu',(e)=>{
+  e.preventDefault();
+  changeSlide(-1);
+});
+
+function changeSlide(dir){
+  slides[current].classList.remove('active');
+  current=(current+dir+slides.length)%slides.length;
+  slides[current].classList.add('active');
+
+  if(current===4){
+    startConfetti();
+  }
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+/* STRONG CONFETTI */
+function startConfetti(){
+  for(let i=0;i<150;i++){
+    let c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*100+'vw';
+    c.style.backgroundColor=`hsl(${Math.random()*360},80%,70%)`;
+    c.style.animationDuration=4+Math.random()*4+'s';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),9000);
+  }
+}
+</script>
+
+</body>
+</html>  to{opacity:1;transform:translateY(0);}
 }
 
 @keyframes float{
